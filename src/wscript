@@ -1,0 +1,9 @@
+#! python
+
+
+def build(ctx):
+    ctx.recurse('data_management')
+    ctx.add_group()
+    ctx.recurse('analysis')
+    ctx.add_group()
+    ctx.recurse('final')

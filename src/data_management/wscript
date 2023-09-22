@@ -1,0 +1,750 @@
+#! python
+
+
+def build(ctx):
+
+    # This describes a code file to run.
+    # Read in raw survey data files and save in Stata-format.
+    ctx(
+        # Which program to use to run the code file.
+        features='run_do_script',
+        # Name of the code file to run.
+        source='readin_surveydata.do',
+        # List of all files that are created by this code file.
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_surveydata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2004.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2005.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2006.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2007.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2008.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2009.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2010.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2011.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2012.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2013.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2014.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'database2004.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2005.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2006.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2007.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2008.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2009.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2010.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2011.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2012.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2013.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'database2014.xlsx')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='readin_surveydata'
+    )
+    # The following files clean all yearly survey data files.
+    # Please note that we only use surveys 2012-2016 for this paper.
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2004.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2004.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2004_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2004.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2004'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2005.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2005.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2005_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2005.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2005'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2006.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2006.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2006_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2006.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2006'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2007.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2007.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2007_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2007.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2007'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2008.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2008.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2008_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2008.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2008'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2009.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2009.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2009_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2009.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2009'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2010.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2010.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2010_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2010.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2010'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2011.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2011.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2011_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2011.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2011'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2012.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2012.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2012_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2012.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2012'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2013.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2013.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2013_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2013.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2013'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2014.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2014.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2014_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydataraw2014.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2014'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2015.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2015.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2015_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'surveyraw_2015.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2015'
+    )
+    ctx(
+        features='run_do_script',
+        source='clean_surveydata2016.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'clean_surveydata2016.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'surveydata2016_clean.dta')
+                ],
+        # List of files on which this code file depends.
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'surveyraw_2016.dta')
+              ],
+        # Name for process (only crucial for Stata-do-files).
+        # Just give it the same name as the code file to run.
+        name='clean_surveydata2016'
+    )
+    # Read in data on supplier level market shares and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_macrodata.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_macrodata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'macrodataraw_FL.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'data_macro_FL.xlsx')
+              ],
+        name='readin_macrodata'
+    )
+    # Read in data on wholesale natural gas prices and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_wholesaleGasPrices.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_wholesaleGasPrices.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'wholesaleGasPrices.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'wholesaleGasPrices.xlsx')
+              ],
+        name='readin_macrodata'
+    )
+   
+    # Read in data on contract prices and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_new_pricedata.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_new_pricedata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_FL.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_gas_fl.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_gas_bxl.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_gas_wl.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_elec_bxl.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_elec_wl.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'newprices.xlsx')
+              ],
+        name='readin_new_pricedata'
+    )
+    # Read in the CPI data for Belgium and saves it in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_cpi.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_cpi.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'CPI_bel.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'CPI_bel.xlsx')
+              ],
+        name='readin_cpi'
+    )
+    # Read in suppliers' share in natural gas market.
+    ctx(
+        features='run_do_script',
+        source='readin_gasshare.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_gasshare.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'data_macro_gas_FL.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'data_macro_gas_FL.xlsx')
+              ],
+        name='readin_gasshare'
+    )
+    # Read in data on wholesale prices and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_wholesaleprices.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_wholesaleprices.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'wholesale_contracts_raw.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'wholesale_spot_raw.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'wholesale_contracts.csv'),
+               ctx.path_to(ctx, 'IN_DATA', 'wholesale_spot.csv')
+              ],
+        name='readin_wholesaleprices'
+    )
+    # Read in data on internet usage and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_internet.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_internet.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'internet.xls')
+              ],
+        name='readin_internet'
+    )
+    # Read in data on internet usage by demographic group and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_internet_demo.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_internet_demo.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet_demo.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'internet_demo.xlsx')
+              ],
+        name='readin_internet_demo'
+    )
+    # Read in the various advertising data sets and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_advertisingdata.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_advertisingdata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'advertisement_bel.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'advertisement_north.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'advertisement_south.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'advertisement_uba.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_yrly.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'advertisement_bel.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'advertisement_north.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'advertisement_south.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'advertisement_uba.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'adv_nielsen_mly.xls'),
+               ctx.path_to(ctx, 'IN_DATA', 'adv_nielsen_yrly.xls')
+              ],
+        name='readin_advertisingdata'
+    )
+    # Read in time series of temperature. Not used in final model specification.
+    ctx(
+        features='run_do_script',
+        source='readin_degreedays.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_degreedays.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'degreedays.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'BEL_HDDCDD.xls')
+              ],
+        name='readin_degreedays'
+    )
+    # Read in data on price components and save in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_pricecomponents.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_pricecomponents.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'pricedata_component_FL.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'prices_component.xlsx')
+              ],
+        name='readin_pricecomponents'
+    )
+    # Read in demographics and save as Stata file.
+    ctx(
+        features='run_do_script',
+        source='readin_demographics.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_demographics.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_age.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_edu.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_inc.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'demo_age.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'demo_edu.xlsx'),
+               ctx.path_to(ctx, 'IN_DATA', 'demo_inc.xlsx')
+              ],
+        name='readin_demographics'
+    )
+    
+    # Read in the firm-level contract market shares and saves them in Stata format.
+    ctx(
+        features='run_do_script',
+        source='readin_contractms.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_contractms.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'contract_acspts.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'contract_ms_long.xlsx')
+              ],
+        name='readin_contractms'
+    )
+    # Read in suppliers' dependency on wholesale markets.
+    ctx(
+        features='run_do_script',
+        source='readin_dep_wholesale.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_dep_wholesale.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'dep_wholesale.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'dep_wholesale.xlsx')
+              ],
+        name='readin_dep_wholesale'
+    )
+    # Read in market shares in 2011 (one periodbefore our full sample starts).
+    ctx(
+        features='run_do_script',
+        source='readin_ms2011.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'readin_ms2011.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'ms2011.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'ms2011.xlsx')
+              ],
+        name='readin_ms2011'
+    )
+# END OF READ ING IN THE DATA.
+
+
+
+    # Reshape and clean supplier level market shares and churn rates.
+    ctx(
+        features='run_do_script',
+        source='reshape_macrodata.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_macrodata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'marketshares_long.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'switching_rates_FL.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'macrodataraw_FL.dta'),
+               # ctx.path_to(ctx,'OUT_DATA','weights.dta')
+              ],
+        name='reshape_macrodata'
+    )
+    # This computes the total number of subscribers for each firm. Not relevant for main estimation, just for robustness check with alternative advertising measure.
+    ctx(
+        features='run_do_script',
+        source='nb_customer.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'nb_customer.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'nb_customer.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'marketshares_long.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'data_macro_gas_FL.dta')
+              ],
+        name='nb_customer'
+    )
+    
+    # Reshape and clean price data.
+    ctx(
+        features='run_do_script',
+        source='reshape_new_pricedata.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_new_pricedata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_FL_long.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_prices_survey.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_FL.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'CPI_bel.dta')
+              ],
+        name='reshape_new_pricedata'
+    )
+   
+    # Reshape and clean price data used for Hausman IV.
+    ctx(
+        features='run_do_script',
+        source='reshape_new_priceinstruments.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_new_priceinstruments.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_long_gas_fl.dta'),
+                # ctx.path_to(ctx,'OUT_DATA','pricedata_long_gas_bxl.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_long_gas_wl.dta'),
+                # ctx.path_to(ctx,'OUT_DATA','pricedata_long_elec_bxl.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_long_elec_wl.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_gas_fl.dta'),
+               # ctx.path_to(ctx,'OUT_DATA','new_pricedata_gas_bxl.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_gas_wl.dta'),
+              # ctx.path_to(ctx,'OUT_DATA','new_pricedata_elec_bxl.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_elec_wl.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'CPI_bel.dta')
+              ],
+        name='reshape_new_priceinstruments'
+    )
+    # Reshape and clean wholesale price data.
+    ctx(
+        features='run_do_script',
+        source='reshape_wholesaleprices.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_wholesaleprices.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'wholesale_prices.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'wholesale_contracts_raw.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'wholesale_spot_raw.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'CPI_bel.dta')
+              ],
+        name='reshape_wholesaleprices'
+    )
+    
+    # Reshape and clean price components data.
+    ctx(
+        features='run_do_script',
+        source='reshape_new_pricecomponents.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_new_pricecomponents.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'pricedata_component.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_FL.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'CPI_bel.dta')
+              ],
+        name='reshape_new_pricecomponents'
+    )
+    # Reshape and clean advertising data.
+    ctx(
+        features='run_do_script',
+        source='reshape_advertisingdata.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_advertisingdata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_long_outside.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_long.dta'),
+                ctx.path_to(ctx, 'OUT_DATA',
+                            'adv_nielsen_long_yrly_outside.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_long_yrly.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'advertisement_bel_long.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'advertisingdata.csv'),
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_yrly.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'advertisement_bel.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'CPI_bel.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'nb_customer.dta')
+              ],
+        name='reshape_advertisingdata'
+    )
+    # Reshape and clean demographics data.
+    ctx(
+        features='run_do_script',
+        source='reshape_demographics.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_demographics.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_age_long.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_edu_long.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_inc_long.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_inc_wide.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'demo_age.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'demo_edu.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'demo_inc.dta')
+              ],
+        name='reshape_demographics'
+    )
+    # Reshape and clean contract-level market shares.
+    ctx(
+        features='run_do_script',
+        source='reshape_contractms.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_contractms.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'contract_ms.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'contract_acspts.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'marketshares_long.dta')
+              ],
+        name='reshape_contractms'
+    )
+    # Compute several control variables for reduced form regressions on survey data.
+    ctx(
+        features='run_do_script',
+        source='reducedform_controlvars_surveys.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reducedform_controlvars_surveys.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'survey_controlvars.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'surveydata2004_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2005_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2006_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2007_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2008_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2009_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2010_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2011_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2012_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2013_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2014_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2015_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'surveydata2016_clean.dta'),
+               ctx.path_to(ctx, 'OUT_DATA',
+                           'adv_nielsen_long_yrly_outside.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_long_outside.dta'),
+               # ctx.path_to(ctx,'OUT_DATA','degreedays.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'new_prices_survey.dta'),
+              # ctx.path_to(ctx,'OUT_DATA','prices_survey_component.dta')
+              ],
+        name='reducedform_controlvars_surveys'
+    )
+    # Read in and clean various statistics on demographic distribution, as well as VREG usage numbers.
+    ctx(
+        features='run_do_script',
+        source='help_demo.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'help_demo.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_help.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'demo_data.csv'),
+                ctx.path_to(ctx, 'OUT_DATA', 'hh_fl.dta'),
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'demo_age_long.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'demo_edu_long.dta'),
+               ctx.path_to(ctx, 'IN_DATA', 'households_bel.csv'),
+               ctx.path_to(ctx, 'OUT_DATA', 'demo_inc_wide.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'survey_controlvars.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'macrodataraw_FL.dta')
+              ],
+        name='help_demo'
+    )
+    
+    # Not crucial for the current model specification.
+    ctx(
+        features='run_do_script',
+        source='cond_ms.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'cond_ms.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'cond_ms_awareness.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'cond_ms_senior.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'cond_ms_income.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'cond_ms_aware.csv'),
+                ctx.path_to(ctx, 'OUT_DATA', 'cond_ms_senior.csv'),
+                ctx.path_to(ctx, 'OUT_DATA', 'cond_ms_income.csv')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'survey_controlvars.dta')
+              ],
+        name='cond_ms'
+    )
+    # Generate the micromoments data for the structural estimation.
+    ctx(
+        features='run_do_script',
+        source='micromoments.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'micromoments.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'micromoments.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'micromoments.csv')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'survey_controlvars.dta')
+              ],
+        name='micromoments'
+    )
+
+    # Merge the different data soruces into one master file for read-in into MATLAB.
+    ctx(
+        features='run_do_script',
+        source='merge_new_masterdata.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'merge_new_masterdata.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_master_data.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'new_master_data.csv')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'marketshares_long.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_FL_long.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'contract_ms.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'switching_rates_FL.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'wholesale_prices.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_long_gas_fl.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_long_gas_wl.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'new_pricedata_long_elec_wl.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'demo_help.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_long_outside.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'pricedata_component.dta'),
+              ctx.path_to(ctx, 'OUT_DATA', 'dep_wholesale.dta')
+              ],
+        name='merge_new_masterdata'
+    )
+    # Reshape and clean internet penetration data.
+    ctx(
+        features='run_do_script',
+        source='reshape_internet.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_internet.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet_adv.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet_adv.csv')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'internet.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'adv_nielsen_long.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'new_master_data.dta')
+              ],
+        name='reshape_internet'
+    )
+    # Reshape and clean internet usage data by demographic groups.
+    ctx(
+        features='run_do_script',
+        source='reshape_internet_demo.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'reshape_internet_demo.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet_usage_age.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet_usage_age.csv'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet_usage_educ.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'internet_usage_educ.csv'),
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'internet_demo.dta')
+              ],
+        name='reshape_internet_demo'
+    )
+    # Compute statistics on average advertising and prices that we use in our reduced form regressions to motivate some of our model assumptions.
+    ctx(
+        features='run_do_script',
+        source='prepare_evidence_adv_assumptions.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'prepare_evidence_adv_assumptions.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'avg_price_data.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'avg_adv_data.dta')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'new_master_data.dta')],
+        name='prepare_evidence_adv_assumptions'
+    )
+
+    # Compute the initial conditions of demographic-specific market shares for our first period in the estimation, i.e., February 2012.
+    ctx(
+        features='run_do_script',
+        source='initialconditions.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'initialconditions.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'initialconditions.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'initialconditions.csv')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'survey_controlvars.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'ms2011.dta')],
+        name='initialconditions'
+    )
+    # Compute IVs that interact lagged wholesale prices with suppliers' dependence on wholesale market.
+    ctx(
+        features='run_do_script',
+        source='wholesale_lags.do',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'log', 'wholesale_lags.log'),
+                ctx.path_to(ctx, 'OUT_DATA', 'ws_future_int_lags.dta'),
+                ctx.path_to(ctx, 'OUT_DATA', 'ws_future_int_lags.csv')
+                ],
+        deps=[ctx.path_to(ctx, 'OUT_DATA', 'wholesale_contracts_raw.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'wholesale_spot_raw.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'CPI_bel.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'new_master_data.dta'),
+               ctx.path_to(ctx, 'OUT_DATA', 'dep_wholesale.dta'), ],
+        name='wholesale_lags'
+    )
+    # Clean and format wholesale prices for counterfactuals and markup comparison.
+    ctx(
+        features='run_r_script',
+        source='aggregate_wholesaleprices.R',
+        target=[ctx.path_to(ctx, 'OUT_DATA', 'wholesale_corr_export.csv'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'wspot_monthly_part_of_day.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'wspot_partofday.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'wspot_intraday.pdf')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'wholesale_spot.csv')]
+    )
+    # Illustrate important energy cost comparison across different countries.
+    ctx(
+        features='run_r_script',
+        source='acer_data_check.R',
+        target=[ctx.path_to(ctx, 'OUT_TABLES', 'mu_bel_table.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'pc_bel_table.tex'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'markups_time_deregulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'markups_time_regulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'retailprices_time_regulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'retailprices_time_deregulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'wholesaleprices_time_regulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'wholesaleprices_time_deregulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'price_composition_regulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'price_composition_deregulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'price_breakdown_regulated.png'),
+                ctx.path_to(ctx, 'OUT_FIGURES',
+                            'price_breakdown_deregulated.png')
+                ],
+        deps=[ctx.path_to(ctx, 'IN_DATA', 'acer_markups.xlsx'),
+              ctx.path_to(ctx, 'IN_DATA', 'acer_price_breakdown.xlsx')]
+    )

@@ -1,0 +1,302 @@
+#! python
+
+
+def build(ctx):
+
+    # Format estimation results.
+    ctx(
+        features='run_py_script',
+        source='format_est_results.py',
+        deps = [ 
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_1_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_1_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_1_mod7.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_1_mod8.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_1_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_1_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_1_mod7.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_1_mod8.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_2_mod7.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultsraw_2_mod8.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_2_mod7.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'estresultslegend_2_mod8.csv'),
+            ],
+        target=[
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_maintext.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_maintext_aej.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_1_mod1.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_2_mod1.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_1_mod4.tex'), 
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_2_mod4.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_1_mod5.tex'), 
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_1_mod6.tex'), 
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_1_mod7.tex'), 
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_2_mod7.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_1_mod8.tex'), 
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_2_mod8.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'estresults_lsv_comp.tex')
+                ]
+        )
+
+    # Format counterfactual results.
+    ctx(
+        features='run_py_script',
+        source='format_counterfactuals.py',
+        deps = [ 
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'welfare_comp_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'welfare_comp_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'welfare_comp_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'welfare_comp_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'id_mu_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'id_mu_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'id_mu_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'id_mu_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_use_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_use_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_use_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_use_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_change_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_change_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_change_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_pcw_change_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_marketshares_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_marketshares_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_marketshares_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_marketshares_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only1_price_id_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only1_price_id_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only1_price_id_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only1_price_id_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only_2_price_id_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only_2_price_id_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only_2_price_id_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_only_2_price_id_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_2_nosc_price_id_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_2_nosc_price_id_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_2_nosc_price_id_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_2_nosc_price_id_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_all_price_id_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_all_price_id_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_all_price_id_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'cf_inc_all_price_id_1_mod6.csv')
+            ],
+        target=[
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_full_gmm_2.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_full_gmm_2_aej.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_comp_gmm_2.tex'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_usage_obspred_2_mod1.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_usage_obspred_2_mod4.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_usage_obspred_1_mod5.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_usage_obspred_1_mod6.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_2_mod1.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_2_mod4.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_1_mod5.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_1_mod6.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_comb_2_mod1.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_comb_2_mod4.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_comb_1_mod5.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_usage_comb_1_mod6.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_change_2_mod1.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_change_2_mod4.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_change_1_mod5.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_pcw_change_1_mod6.pdf'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_2_mod1.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_2_mod4.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_1_mod5.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_1_mod6.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_small_2_mod1.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_small_2_mod4.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_small_1_mod5.tex'),
+                ctx.path_to(ctx, 'OUT_TABLES', 'cf_shares_small_1_mod6.tex'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_price_id_2_mod1.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_price_id_2_mod4.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_price_id_1_mod5.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'cf_price_id_1_mod6.pdf')
+                ]
+        )
+
+    # Format table of model diagnostics.
+    ctx(
+        features='run_py_script',
+        source='format_model_diagnostics.py',
+        deps=[
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'contract_values_1_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'contract_values_1_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'contract_values_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'contract_values_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'contract_values_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'contract_values_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'wtp_comp_1_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'wtp_comp_1_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'wtp_comp_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'wtp_comp_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'wtp_comp_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'wtp_comp_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_churn_1_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_pcw_1_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_churn_1_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_pcw_1_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_churn_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_pcw_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_churn_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_pcw_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_churn_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_pcw_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_churn_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_pcw_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_contract_1_mod1.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_contract_1_mod4.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_contract_1_mod5.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_contract_1_mod6.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_contract_2_mod1.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_contract_2_mod4.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_firm_1_mod1.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_firm_1_mod4.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_firm_1_mod5.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_firm_1_mod6.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_firm_2_mod1.mat'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_firm_2_mod4.mat')
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ccp_contract_old_sc_1_mod1.mat'),
+            # ctx.path_to(ctx, 'IN_DATA', 'ccp_contract_old_sc_1_mod4.mat'),
+            # ctx.path_to(ctx, 'IN_DATA', 'ccp_contract_old_sc_1_mod5.mat'),
+            # ctx.path_to(ctx, 'IN_DATA', 'ccp_contract_old_sc_1_mod6.mat'),
+            # ctx.path_to(ctx, 'IN_DATA', 'ccp_contract_old_sc_2_mod1.mat'),
+            # ctx.path_to(ctx, 'IN_DATA', 'ccp_contract_old_sc_2_mod4.mat')
+            ],
+        target=[
+            ctx.path_to(ctx, 'OUT_TABLES', 'contract_val_1_mod1.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'contract_val_1_mod4.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'contract_val_1_mod5.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'contract_val_1_mod6.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'contract_val_2_mod1.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'contract_val_2_mod4.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'gof_churn_pcw_1_mod1.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'gof_churn_pcw_1_mod4.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'gof_churn_pcw_1_mod5.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'gof_churn_pcw_1_mod6.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'gof_churn_pcw_2_mod1.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'gof_churn_pcw_2_mod4.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'comp_est_stats_final.tex'),
+            ctx.path_to(ctx, 'OUT_TABLES', 'comp_contract_val_final.tex')
+                ]
+        )
+    
+    # Plot market shares for observed data and counterfactuals.
+    ctx(
+        features='run_py_script',
+        source='plot_marketshares.py',
+        deps=[
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_obs.csv')
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_subsidy_mod1.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_subsidy_mod4.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_subsidy_mod5.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_subsidy_mod6.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_perfect_info_mod1.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_perfect_info_mod4.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_perfect_info_mod5.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_perfect_info_mod6.csv'),
+            # ctx.path_to(ctx, 'OUT_ANALYSIS', 'ms_firm_perfect_info.csv')
+            ],
+        target=[ctx.path_to(ctx, 'OUT_FIGURES', 'plotmsobs.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmssubsidy_2_mod1.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmssubsidy_2_mod4.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmssubsidy_1_mod5.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmssubsidy_1_mod6.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmsperfectinfo_2_mod1.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmsperfectinfo_2_mod4.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmsperfectinfo_1_mod5.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotmsperfectinfo_1_mod6.pdf')
+                ]
+        )
+
+    # Plot price evolution.
+    ctx(
+        features='run_py_script',
+        source='plot_prices.py',
+        deps=[
+            ctx.path_to(ctx, 'OUT_DATA', 'prices_data.csv'),
+            ctx.path_to(ctx, 'OUT_DATA', 'wholesale_corr_export.csv'),
+            ctx.path_to(ctx, 'OUT_DATA', 'new_master_data.csv')],
+        target=[ctx.path_to(ctx, 'OUT_FIGURES', 'plotconvprices.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plotgreenprices.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'plot_prices_markups_mwh.pdf')
+                ]
+        )
+
+    # Plot PCW usage and switching.
+    ctx(
+        features='run_py_script',
+        source='plot_awareness_switching.py',
+        deps=[
+            ctx.path_to(ctx, 'OUT_DATA', 'awareness_switching_data.csv')],
+        target=[ctx.path_to(ctx, 'OUT_FIGURES', 'plotawarenessswitching.pdf')
+                ]
+        )
+
+    # Plot PCW search cost for different consumer types and over time.
+    ctx(
+        features='run_py_script',
+        source='plot_pcw_entrycost.py',
+        deps=[
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'kappa_EUR_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'kappa_EUR_2_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'kappa_EUR_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'kappa_EUR_1_mod6.csv'),
+            ],
+        target=[
+            ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_search_costs_2_mod1.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_search_costs_2_mod4.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_search_costs_1_mod5.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'pcw_search_costs_1_mod6.pdf')
+            ]
+        )
+
+    # Plot some graphs to support identification assumptions.
+    ctx(
+        features='run_py_script',
+        source='plot_ada_evidence.py',
+        deps=[
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'ada_evidence_data.csv')
+            ],
+        target=[ctx.path_to(ctx, 'OUT_FIGURES', 'ada_vtest_ads.pdf'),
+                ctx.path_to(ctx, 'OUT_FIGURES', 'ada_vtest_int.pdf')
+                ]
+        )
+    # Plot graph on goodness of fit of churn rates and PCW usage.
+    ctx(
+        features='run_py_script',
+        source='plot_gof.py',
+        deps=[
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_raw_data_1_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_raw_data_1_mod4.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_raw_data_1_mod5.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_raw_data_1_mod6.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_raw_data_2_mod1.csv'),
+            ctx.path_to(ctx, 'OUT_ANALYSIS', 'gf_raw_data_2_mod4.csv'),
+        ],
+        target=[
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_1_mod1.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_1_mod4.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_1_mod5.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_1_mod6.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_2_mod1.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_2_mod4.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_combined_1_mod1.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_combined_1_mod4.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_combined_1_mod5.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_combined_1_mod6.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_combined_2_mod1.pdf'),
+            ctx.path_to(ctx, 'OUT_FIGURES', 'gof_pcw_churn_combined_2_mod4.pdf')    
+            ]
+    )
+
+    
+
